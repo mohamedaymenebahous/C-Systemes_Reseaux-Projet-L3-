@@ -1,0 +1,239 @@
+/* printf("nb : %d\n", numPlayers); 
+    for (int i = 0; i < 4; i++)
+    {
+        printf("Player id : %d\n", players[i].id);
+    } */
+
+/* for (int i = 0; i < 104; i++)
+    {
+        printf("%d:%d ", newDeck[i].cardNumber, newDeck[i].cardBoeuf); //for debugging
+    }
+    printf("\n--------------------\n"); */
+    /* for (int i = 0; i < 104; i++)
+    {
+        printf("%d:%d ", shuffledDeck[i].cardNumber, shuffledDeck[i].cardBoeuf); //for debugging
+    }
+    printf("\n"); */
+    
+/* srand(time(NULL));
+
+    int totalCardsNumber = 104;
+    card CardShuffle[104];
+
+    for (int a = 0; a < totalCardsNumber; a++)
+    {
+        CardShuffle[a].cardNumber = a + 1;
+        CardShuffle[a].cardBoeuf = 1 + rand() % 7;
+        //printf("%d:%d ", CardShuffle[i].cardNumber, CardShuffle[i].cardBoeuf); //for debugging
+    }
+
+    for (int b = 0; b < totalCardsNumber; b++)
+    {
+        int temp = CardShuffle[b].cardNumber;
+        int randomIndex = rand() % totalCardsNumber;
+        CardShuffle[b] = CardShuffle[randomIndex];
+        CardShuffle[randomIndex].cardNumber = temp;
+        //printf("%d:%d ", CardShuffle[i].cardNumber, CardShuffle[i].cardBoeuf); //for debugging
+    }
+
+    //printf("Entrer le nombre de joueurs:\n");
+    int nbPlayers = 4;
+    //scanf("%d", &nbPlayers);
+    player players[nbPlayers];
+    card beginningCards[4];
+
+    for (int c = 40; c < 44; c++)
+    {
+        beginningCards[c] = CardShuffle[c];
+        //printf("%d:%d\n", beginningCards[i].cardNumber, beginningCards[i].cardBoeuf); //for debugging
+    }
+
+    /* for (int d = 0; d < nbPlayers; d++)
+    {
+        players[d].id = d + 1;
+        printf("Joueur : %d\n", players[d].id);
+    } */
+
+    /* int id0 = fork();
+    if (id0 == 0)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            players[0].cards[i] = CardShuffle[i];
+            FILE *f1 = fopen("../tests/file1.txt", "ab");
+            if (f1 == NULL)
+            {
+                printf("Error opening file!\n");
+                exit(1);
+            }
+            fprintf(f1, "%d:%d\n", players[0].cards[i].cardNumber, players[0].cards[i].cardBoeuf); 
+            fclose(f1);
+        }
+        wait(NULL);
+        int id1 = fork();
+        if (id1 == 0)
+        {
+            for (int j = 10; j < 20; j++)
+            {
+                players[1].cards[j] = CardShuffle[j];
+                FILE *f2 = fopen("../tests/file2.txt", "ab");
+                if (f2 == NULL)
+                {
+                    printf("Error opening file!\n");
+                    exit(1);
+                }
+                fprintf(f2, "%d:%d\n", players[1].cards[j].cardNumber, players[1].cards[j].cardBoeuf); 
+                fclose(f2);
+            }
+            wait(NULL);
+            int id2 = fork();
+            if (id2 == 0)
+            {
+                for (int k = 20; k < 30; k++)
+                {
+                    players[2].cards[k] = CardShuffle[k];
+                    FILE *f3 = fopen("../tests/file3.txt", "ab");
+                    if (f3 == NULL)
+                    {
+                        printf("Error opening file!\n");
+                        exit(1);
+                    }
+                    fprintf(f3, "%d:%d\n", players[2].cards[k].cardNumber, players[2].cards[k].cardBoeuf); 
+                    fclose(f3);
+                }
+                wait(NULL);
+                int id3 = fork();
+                if (id3 == 0)
+                {
+                    for (int l = 30; l < 40; l++)
+                    {
+                        players[3].cards[l] = CardShuffle[l];
+                        FILE *f4 = fopen("../tests/file4.txt", "ab");
+                        if (f4 == NULL)
+                        {
+                            printf("Error opening file!\n");
+                            exit(1);
+                        }
+                        fprintf(f4, "%d:%d\n", players[3].cards[l].cardNumber, players[3].cards[l].cardBoeuf); 
+                        fclose(f4);
+                    }
+                }
+            }
+        }
+    } */
+    
+    /*
+    for (int e = 0; e < nbPlayers; e++)
+    {
+        int m = (4 + (e * 10));
+        int n = (4 + ((e + 1) * 10));
+        for (int f = m; f < n; f++)
+        {
+            players[e].cards[f] = CardShuffle[f];
+            printf("%d --- %d:%d\n", e, players[e].cards[f].cardNumber, players[e].cards[f].cardBoeuf); //for debugging
+        }
+    } 
+    */
+
+    /* for (int g = 0; g < 4; g++)
+    {
+        char name_of_fifo[30] = "../FIFOS/";
+        char temp[30];
+        sprintf(temp, "Player_%d_File", g);
+        strcat(name_of_fifo, temp);
+        if (mkfifo(name_of_fifo, 0777) == -1)
+        {
+            if(errno != EEXIST)
+            {
+                printf("Couldn't create FIFO file\n");
+                return 1; //for debugging
+            }
+        }
+
+        printf("Opening FIFO file ...\n");
+        int fd = open(name_of_fifo, O_RDWR);
+        if (fd == -1)
+        {
+            return 2; //for debugging
+        }
+        printf("FIFO file openened successfully\n");
+
+        char card_description[10];
+        for (int h = 0; h < 10; h++)
+        {
+            sprintf(card_description, "%d:%d\n", players[g].cards[h].cardNumber, players[g].cards[h].cardBoeuf);
+            if (write(fd, &card_description, sizeof(card_description)) == -1)
+            {
+                return 3; //for debugging
+            }
+        }
+        printf("FIFO file written\n"); 
+        close(fd);
+        printf("Closed\n");
+    } */ 
+
+    
+
+/* void sendNbPlayers(int nbPlayers)
+{
+    int fd = open("../FIFOS/nbPlayers", O_WRONLY);
+    write(fd, &nbPlayers, sizeof(int)) == -1;
+    close(fd);
+} */
+
+//useless function
+/* int forEachPlayerFIFO(int nb, player * players, card * cards)
+{
+    int index;
+    card cards_description[10];
+    for (int i = 0; i < nb; i++)
+    {
+        char name_of_fifo[30] = "../FIFOS/";
+        char temp[30];
+        sprintf(temp, "Player_%d_File", i);
+        strcat(name_of_fifo, temp);
+        if (mkfifo(name_of_fifo, 0777) == -1)
+        {
+            if(errno != EEXIST)
+            {
+                printf("Couldn't create FIFO file\n");
+                return 1; //for debugging
+            }
+        }
+
+        //printf("Opening FIFO file ...\n");
+        int fd2 = open(name_of_fifo, O_WRONLY);
+        //printf("FIFO file openened successfully\n"); //for debugging
+
+        //printf("Writing to FIFO\n"); //for debugging
+        for (int j = 0; j < 10; j++)
+        {
+            index = (4 + i * 10) + j;
+            players[i].cards[j] = cards[index];
+            cards_description[i] = cards[index];
+            write(fd2, &cards_description[i], sizeof(card));
+        }
+        //printf("FIFO file written\n"); //for debugging
+
+        close(fd2);
+        //printf("Closed\n"); //for debugging
+    }
+} */
+
+//useless function
+/* card * playerCards(int j)
+{
+    static card result[40];
+    char name_of_fifo[30] = "../FIFOS/";
+    char temp[30];
+    sprintf(temp, "Player_%d_File", j);
+    strcat(name_of_fifo, temp);
+    int fd = open(name_of_fifo, O_RDONLY);
+    for (int i = 0; i < 10; i++)
+    {
+        read(fd, &result[i], sizeof(card));
+        printf("%d) %d:%d\n", (i + 1), result[i].cardNumber, result[i].cardBoeuf);
+    }
+    close(fd);
+    return result;
+} */
